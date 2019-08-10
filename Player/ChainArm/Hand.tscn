@@ -8,6 +8,7 @@
 [node name="Hand" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
+mass = 50.0
 gravity_scale = 10.0
 contacts_reported = 1
 contact_monitor = true
@@ -18,5 +19,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.286949, 0.286949 )
+z_index = 3
 texture = ExtResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Arm_body_entered"]

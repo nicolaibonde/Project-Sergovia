@@ -3,20 +3,17 @@
 [ext_resource path="res://Player/ChainArm/Assets/Loop.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+radius = 2.0
 
 [node name="Loop" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 0
-mass = 5.0
-gravity_scale = 25.0
-linear_damp = 25.0
-angular_damp = 2.0
+mass = 2.0
+linear_damp = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 z_index = 1
 texture = ExtResource( 1 )

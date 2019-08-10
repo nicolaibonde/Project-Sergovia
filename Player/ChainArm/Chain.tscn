@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/ChainArm/Assets/anchor.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.0
+radius = 2.0
 
 [node name="Chain" type="Node2D"]
 position = Vector2( 59.1552, 11.9448 )
