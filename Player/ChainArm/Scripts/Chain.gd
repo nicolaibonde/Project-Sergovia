@@ -23,7 +23,8 @@ func _ready():
 func addLoop(parent):
 	var loop = LOOP.instance()
 	loop.position = parent.position
-	loop.position.x += 26
+	var aim_vector = (get_global_mouse_position() - parent.global_position).normalized()
+	loop.position += (aim_vector * 26)
 	add_child(loop)
 	chainList.append(loop)
 	return loop
@@ -40,6 +41,9 @@ func addHand(parent):
 	var hand = HAND.instance()
 	hand.position = parent.position
 	add_child(hand)
+	var player = get_tree().get_nodes_in_group("Player")
+	hand.connect("grabbed",player[0],"on_grab")
+	hand.connect("ungrabbed",player[0],"on_release")
 	hand.connect("retracted",self,"on_retracted")
 	chainHand = hand
 	return hand
@@ -47,13 +51,11 @@ func addHand(parent):
 # This remove both a loop and a link
 func removeLoopItem():
 	var item = chainList.pop_back()
-	remove_child(item)
 	item.queue_free()
 
 func removeHand():
 	if chainHand != null:
 		chainHand.disconnect("retracted",self,"on_retracted")
-		remove_child(chainHand)
 		chainHand.queue_free()
 		chainHand = null
 		removeLoopItem()

@@ -6,7 +6,7 @@
 [node name="Link" type="PinJoint2D"]
 z_index = 1
 bias = 0.5
-softness = 0.1
+softness = 0.5
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 2
