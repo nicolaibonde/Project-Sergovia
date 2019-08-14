@@ -24,7 +24,7 @@ func _physics_process(delta):
 		var current_chain = pivot - grab_position
 		var error = current_chain - current_chain.normalized()*max_chain_length
 		if current_chain.length() - max_chain_length > 0:
-			velocity -= error *0.5
+			velocity -= error
 			#TODO dont do opposite velocity, just move the player to the positoo
 	else:
 		pass
@@ -62,14 +62,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_jump"):
 		if $FloorRay.is_colliding() or is_on_floor():
 			velocity.y = -JUMP_VELOCITY
-
-
 	
 	move_and_slide(velocity, UP)
 	
+	if grab_position != null:
+		velocity = velocity *0.98
+			
+	
 func on_grab(grab_pos, max_dist):
 	grab_position = grab_pos
-	max_chain_length = max_dist/1.5
+	max_chain_length = max_dist*0.75
 	
 func on_release():
 	grab_position = null

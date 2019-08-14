@@ -3,7 +3,7 @@
 [ext_resource path="res://Player/ChainArm/Assets/anchor.png" type="Texture" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 18.7365
+radius = 50.0
 
 [node name="GrabPoint" type="Area2D" groups=[
 "grabbable",
