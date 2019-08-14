@@ -27,45 +27,14 @@ shape = SubResource( 1 )
 scale = Vector2( 15.93, 0.29 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 893.98, 366.337 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource( 1 )
-one_way_collision = true
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-scale = Vector2( 15.93, 0.29 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 821.274, 479.941 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-scale = Vector2( 15.93, 0.29 )
-texture = ExtResource( 2 )
-
 [node name="GrabPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 583.853, 91.2881 )
+position = Vector2( 170.097, 447.645 )
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 828.821, -48.2529 )
+position = Vector2( 415.064, 308.104 )
 
 [node name="GrabPoint3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1193.79, -158.987 )
+position = Vector2( 780.037, 197.369 )
 
 [node name="GrabPoint4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1476.9, -264.694 )
+position = Vector2( 1063.15, 91.663 )

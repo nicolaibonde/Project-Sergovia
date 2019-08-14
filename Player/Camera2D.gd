@@ -11,10 +11,6 @@ var _last_offset = Vector2(0, 0)
 
 func _ready():
 	set_process(true)
-	
-
-func punch_shake():
-	shake(0.1,20,8)
 
 # Shake with decreasing intensity while there's time remaining.
 func _process(delta):

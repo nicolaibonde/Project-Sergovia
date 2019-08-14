@@ -27,7 +27,9 @@ texture = ExtResource( 3 )
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"Main_Camera",
+]]
 offset = Vector2( 0, -170 )
 current = true
 smoothing_enabled = true

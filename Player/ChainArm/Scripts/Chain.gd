@@ -42,9 +42,11 @@ func addHand(parent):
 	hand.position = parent.position
 	add_child(hand)
 	var player = get_tree().get_nodes_in_group("Player")
+	var camera = get_tree().get_nodes_in_group("Main_Camera")
 	hand.connect("grabbed",player[0],"on_grab")
 	hand.connect("ungrabbed",player[0],"on_release")
 	hand.connect("retracted",self,"on_retracted")
+	hand.connect("shake",camera[0],"shake")
 	chainHand = hand
 	return hand
 

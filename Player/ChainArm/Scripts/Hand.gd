@@ -11,6 +11,7 @@ var aim_vector = Vector2()
 var grab_position
 signal grabbed
 signal ungrabbed
+signal shake
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -67,9 +68,10 @@ func updateMovement(delta):
 			if pivot.global_position.distance_to(global_position) >= extended_length:
 				# retract
 				retracting = true
-				set_deferred("mode",MODE_KINEMATIC)
+				mode = MODE_KINEMATIC
 				emit_signal("extended")
 				retraction_start = global_position
+				emit_signal("shake",0.1,40,2)
 			if retracting:
 				var goal = aim_vector * DISTANCE + pivot.global_position
 				var temp = retraction_start.linear_interpolate(goal, retraction)
