@@ -3,7 +3,7 @@ extends RigidBody2D
 const DISTANCE = 46
 const MIN_DISTANCE = DISTANCE -30
 const FORCE = 1500
-const RETRACTION_SPEED = 3
+const RETRACTION_SPEED = 6
 
 var pivot 
 var spawned_hand
@@ -16,6 +16,7 @@ signal ungrabbed
 func _ready():	
 	pivot = get_parent().get_node("Anchor")
 	set_deferred("mode",MODE_KINEMATIC)
+	
 	pass # Replace with function body.
 
 var detached = false
@@ -32,6 +33,13 @@ func fire(ext_len):
 	detached = true
 	set_deferred("mode",MODE_RIGID)
 
+func refire():
+	print("refire")
+	fired = false
+	detached = true
+	retracting = false
+	set_deferred("mode",MODE_RIGID)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -40,7 +48,7 @@ func _physics_process(delta):
 func updateMovement(delta):
 	if grab_position != null:
 		global_position = grab_position
-		if Input.is_action_just_pressed("player_fire"):
+		if Input.is_action_just_released("player_fire"):
 			grab_position = null
 			retracting = true
 			retraction_start = global_position
@@ -77,7 +85,8 @@ func updateMovement(delta):
 
 func _on_Grabber_area_entered(area):
 	if grab_position == null and area.is_in_group("grabbable"):
-		print("Grabbing: " + area.name)
-		set_deferred("mode",MODE_KINEMATIC)
-		grab_position = area.get_node("Pivot").global_position
-		emit_signal("grabbed",grab_position,extended_length)
+		if detached and Input.is_action_pressed("player_fire"):
+			print("Grabbing: " + area.name)
+			set_deferred("mode",MODE_KINEMATIC)
+			grab_position = area.get_node("Pivot").global_position
+			emit_signal("grabbed",grab_position,extended_length)

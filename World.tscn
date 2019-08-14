@@ -59,13 +59,13 @@ scale = Vector2( 15.93, 0.29 )
 texture = ExtResource( 2 )
 
 [node name="GrabPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 576.821, 89.53 )
+position = Vector2( 583.853, 91.2881 )
 
 [node name="GrabPoint2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 828.821, -48.2529 )
 
 [node name="GrabPoint3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1257.09, -76.3574 )
+position = Vector2( 1193.79, -158.987 )
 
 [node name="GrabPoint4" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1476.9, -264.694 )

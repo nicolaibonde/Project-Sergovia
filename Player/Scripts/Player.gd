@@ -39,17 +39,13 @@ func _physics_process(delta):
 	
 	#TODO: Fix deacceleration with controller, now results in jitter
 	if Input.is_action_pressed("player_left"):
-		velocity.x -= Input.get_action_strength("player_left")*ACCELERATION
+		velocity.x -= ACCELERATION
 	if Input.is_action_pressed("player_right"):
-		velocity.x += Input.get_action_strength("player_right")*ACCELERATION
+		velocity.x += ACCELERATION
 
 	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and is_on_floor():
-		if velocity.x > 5:
-			velocity.x -= ACCELERATION
-		elif velocity.x < -5:
-			velocity.x += ACCELERATION
-		else:
-			velocity.x = 0
+		velocity.x =  lerp(velocity.x,0,1)
+		
 	velocity.x = clamp(velocity.x,-top_move_speed,top_move_speed)
 
 	if is_on_ceiling():
@@ -63,11 +59,11 @@ func _physics_process(delta):
 		if $FloorRay.is_colliding() or is_on_floor():
 			velocity.y = -JUMP_VELOCITY
 	
-	move_and_slide(velocity, UP)
-	
 	if grab_position != null:
 		velocity = velocity *0.98
-			
+		
+	move_and_slide(velocity, UP)
+	
 	
 func on_grab(grab_pos, max_dist):
 	grab_position = grab_pos

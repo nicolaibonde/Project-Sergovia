@@ -73,6 +73,9 @@ func on_retracted():
 var extended = false
 
 func _process(delta):
+	if Input.is_action_just_pressed("player_fire") and extended:
+		chainHand.refire()
+	
 	if Input.is_action_just_pressed("player_fire") and not extended:
 		extended = true
 		removeHand()
@@ -84,4 +87,4 @@ func _process(delta):
 			parent = child
 		var hand = addHand(parent)
 		addLink(parent, hand, true)
-		hand.fire(26*2*(EXTRA_CHAINS))
+		chainHand.fire(26*2*(EXTRA_CHAINS))
