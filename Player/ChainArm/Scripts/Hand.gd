@@ -6,6 +6,7 @@ const FORCE = 1500
 const RETRACTION_SPEED = 6
 
 var pivot 
+var player
 var spawned_hand
 var aim_vector = Vector2()
 var grab_position
@@ -16,6 +17,7 @@ signal shake
 # Called when the node enters the scene tree for the first time.
 func _ready():	
 	pivot = get_parent().get_node("Anchor")
+	player = get_parent().get_parent()
 	set_deferred("mode",MODE_KINEMATIC)
 	
 	pass # Replace with function body.
@@ -35,7 +37,6 @@ func fire(ext_len):
 	set_deferred("mode",MODE_RIGID)
 
 func refire():
-	print("refire")
 	fired = false
 	detached = true
 	retracting = false
@@ -65,13 +66,13 @@ func updateMovement(delta):
 				apply_impulse(Vector2(),aim_vector*FORCE*mass)
 				fired = true
 		elif detached:
-			if pivot.global_position.distance_to(global_position) >= extended_length:
+			if (pivot.global_position + player.velocity.normalized()*30).distance_to(global_position) >= extended_length:
 				# retract
 				retracting = true
 				mode = MODE_KINEMATIC
 				emit_signal("extended")
 				retraction_start = global_position
-				emit_signal("shake",0.1,40,2)
+				emit_signal("shake",0.07,40,2)
 			if retracting:
 				var goal = aim_vector * DISTANCE + pivot.global_position
 				var temp = retraction_start.linear_interpolate(goal, retraction)
@@ -92,3 +93,16 @@ func _on_Grabber_area_entered(area):
 			set_deferred("mode",MODE_KINEMATIC)
 			grab_position = area.get_node("Pivot").global_position
 			emit_signal("grabbed",grab_position,extended_length)
+
+
+func _on_Grabber_body_entered(body):
+	if fired and not retracting and body.is_in_group("Punchable"): 
+		print("Punching: " + body.name)
+		if body.has_method("damage"):
+			var hp = body.damage(1)
+			if hp > 0:
+				emit_signal("shake",0.1,40,8)
+		retracting = true
+		mode = MODE_KINEMATIC
+		emit_signal("extended")
+		retraction_start = global_position
