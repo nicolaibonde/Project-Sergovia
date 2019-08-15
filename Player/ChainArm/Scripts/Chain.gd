@@ -3,7 +3,7 @@ extends Node2D
 const LOOP = preload("res://Player/ChainArm/Loop.tscn")
 const LINK = preload("res://Player/ChainArm/Link.tscn")
 const HAND = preload("res://Player/ChainArm/Hand.tscn")
-const EXTRA_CHAINS = 4
+const EXTRA_CHAINS = 8
 
 export (int) var loops = 1
 
@@ -14,6 +14,7 @@ var chainHand
 func _ready():
 	var parent = $Anchor
 	for i in range(loops):
+		print(i)
 		var child = addLoop(parent)
 		addLink(parent, child)
 		parent = child
@@ -24,14 +25,14 @@ func addLoop(parent):
 	var loop = LOOP.instance()
 	loop.position = parent.position
 	var aim_vector = (get_global_mouse_position() - parent.global_position).normalized()
-	loop.position += (aim_vector * 26)
+	loop.position += (aim_vector * 13)
 	add_child(loop)
 	chainList.append(loop)
 	return loop
 
 func addLink(parent, child, hide=false):
 	var pin = LINK.instance()
-	pin.get_node("Sprite").visible = !hide
+#	pin.get_node("Sprite").visible = !hide
 	pin.node_a = parent.get_path()
 	pin.node_b = child.get_path()
 	parent.add_child(pin)
@@ -89,4 +90,4 @@ func _process(delta):
 			parent = child
 		var hand = addHand(parent)
 		addLink(parent, hand, true)
-		chainHand.fire(26*2*(EXTRA_CHAINS))
+		chainHand.fire(16*2*(EXTRA_CHAINS))

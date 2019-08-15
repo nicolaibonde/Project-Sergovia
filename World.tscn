@@ -1,26 +1,107 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://GrabPoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GrabPoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/background-elements/window.png" type="Texture" id=3]
 [ext_resource path="res://Enemy/PatrollingBoundry.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemy/PatrollingEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy/StationaryEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/tiles/tile2.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1471.63, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 361.223, 10 )
+extents = Vector2( 450, 150 )
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 511.351, 241.74 )
+position = Vector2( 423.404, 525.989 )
+
+[node name="GrabPoint" parent="." instance=ExtResource( 2 )]
+position = Vector2( 232.559, 8.98601 )
+
+[node name="GrabPoint2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 499.418, 5.97438 )
+
+[node name="window" type="Sprite" parent="."]
+position = Vector2( 1065.78, -131.447 )
+texture = ExtResource( 3 )
+
+[node name="GrabPoint3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 947.158, 428.337 )
+
+[node name="GrabPoint6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 601.874, 282.787 )
+rotation = 1.5708
+
+[node name="PatrollingBoundry3" parent="." groups=[
+"Patrol_B",
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 725.746, 252.312 )
+
+[node name="PatrollingBoundry4" parent="." groups=[
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 1034.47, 241.182 )
+
+[node name="PatrollingEnemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 862.635, 231.158 )
+
+[node name="PatrollingEnemy3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1180.53, 232.325 )
+boundry_group = "Patrol_B"
+movement_speed = 150.0
+
+[node name="PatrollingBoundry5" parent="." groups=[
+"Patrol_B",
+] instance=ExtResource( 4 )]
+position = Vector2( 1369.56, 235.454 )
+
+[node name="GrabPoint4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 868.276, -385.5 )
+
+[node name="GrabPoint5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 647.288, -132.236 )
+rotation = -1.5708
+
+[node name="PatrollingEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 972.592, 601.809 )
+
+[node name="PatrollingBoundry" parent="." groups=[
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 737.589, 630.377 )
+
+[node name="PatrollingBoundry2" parent="." groups=[
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 1273.97, 633.186 )
+
+[node name="PatrollingEnemy4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 33.9395, 625.707 )
+health = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 218.668, 730.881 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 510, 589 )
+position = Vector2( 665.439, 731.19 )
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 2
 __meta__ = {
 "_edit_group_": true
@@ -30,82 +111,91 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-scale = Vector2( 300, 0.29 )
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
 
-[node name="GrabPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 170.097, 447.645 )
-
-[node name="GrabPoint2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 422.062, 191.469 )
-
-[node name="GrabPoint3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 668.747, 0.797089 )
-
-[node name="PatrollingBoundry3" parent="." groups=[
-"Patrol_B",
-"Patrol_A",
-] instance=ExtResource( 4 )]
-position = Vector2( 616.745, 248.796 )
-
-[node name="PatrollingBoundry4" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 4 )]
-position = Vector2( 913.164, 235.908 )
-
-[node name="PatrollingEnemy2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 741.327, 225.884 )
-
-[node name="PatrollingEnemy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1059.22, 227.051 )
-boundry_group = "Patrol_B"
-movement_speed = 150.0
-
-[node name="PatrollingBoundry5" parent="." groups=[
-"Patrol_B",
-] instance=ExtResource( 4 )]
-position = Vector2( 1248.25, 230.18 )
-
-[node name="GrabPoint4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1038.81, -67.286 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 939.374, 286.395 )
-collision_mask = 2
+position = Vector2( 1107.27, 733.578 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 2 )
-one_way_collision = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-scale = Vector2( 11.27, 0.31 )
-texture = ExtResource( 2 )
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
 
-[node name="PatrollingEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 777.445, 542.034 )
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 834.623, 344.667 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="PatrollingBoundry" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 4 )]
-position = Vector2( 703.495, 570.602 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource( 1 )
 
-[node name="PatrollingBoundry2" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 4 )]
-position = Vector2( 980.925, 573.411 )
+[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
 
-[node name="PatrollingEnemy4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 60.3108, 546.153 )
-health = 1
+[node name="StaticBody2D5" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 1280.36, 344.667 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="PatrollingEnemy5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 60.3108, 483.17 )
-health = 1
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
+shape = SubResource( 1 )
 
-[node name="PatrollingEnemy6" parent="." instance=ExtResource( 6 )]
-position = Vector2( 61.4771, 417.854 )
-health = 1
+[node name="Sprite" type="Sprite" parent="StaticBody2D5"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( -31.1191, -75.0185 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D6"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 411.363, -78.272 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D7"]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 900, 300 )

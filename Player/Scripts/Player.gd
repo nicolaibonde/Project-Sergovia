@@ -16,6 +16,14 @@ var velocity = Vector2()
 var grab_position = null
 var max_chain_length = 0
 
+var chain_anchor = Vector2()
+
+var looking_right = true
+
+func _ready():
+	chain_anchor = $Chain.position
+	
+
 func _physics_process(delta):
 
 	velocity.y += GRAVITY
@@ -40,10 +48,16 @@ func _physics_process(delta):
 	#TODO: Fix deacceleration with controller, now results in jitter
 	if Input.is_action_pressed("player_left"):
 		velocity.x -= ACCELERATION
+		anim_left()
+		looking_right = false
+		
 	if Input.is_action_pressed("player_right"):
 		velocity.x += ACCELERATION
+		anim_right()
+		looking_right = true
 
 	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and is_on_floor():
+		anim_stop()
 		velocity.x =  lerp(velocity.x,0,1)
 		
 	velocity.x = clamp(velocity.x,-top_move_speed,top_move_speed)
@@ -58,6 +72,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("player_jump"):
 		if $FloorRay.is_colliding() or is_on_floor():
 			velocity.y = -JUMP_VELOCITY
+			anim_jump()
 	
 	if grab_position != null:
 		velocity = velocity *0.98
@@ -67,7 +82,31 @@ func _physics_process(delta):
 	
 func on_grab(grab_pos, max_dist):
 	grab_position = grab_pos
-	max_chain_length = max_dist*0.75
+	max_chain_length = max_dist*0.70
 	
 func on_release():
 	grab_position = null
+	
+################### Animations
+
+
+func anim_stop():
+	$AnimatedSprite.play("Idle")
+	
+func anim_left():
+	$AnimatedSprite.play("Walk")
+	$Chain.position.x = -chain_anchor.x
+	$AnimatedSprite.flip_h = true
+
+func anim_right():
+	$AnimatedSprite.play("Walk")
+	$Chain.position.x = chain_anchor.x
+	$AnimatedSprite.flip_h = false
+	pass
+
+func anim_jump():
+	$AnimatedSprite.play("Idle")
+	$AnimatedSprite.stop()
+	pass
+	
+	

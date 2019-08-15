@@ -1,13 +1,12 @@
 extends RigidBody2D
 
-const DISTANCE = 46
+const DISTANCE = 80
 const MIN_DISTANCE = DISTANCE -30
 const FORCE = 1500
 const RETRACTION_SPEED = 6
 
 var pivot 
 var player
-var spawned_hand
 var aim_vector = Vector2()
 var grab_position
 signal grabbed
@@ -31,6 +30,8 @@ var retraction_start = Vector2()
 signal retracted  
 signal extended
 
+var rotation_offset = 0
+
 func fire(ext_len):
 	extended_length = ext_len
 	detached = true
@@ -47,24 +48,44 @@ func refire():
 func _physics_process(delta):
 	updateMovement(delta)
 	
+	if grab_position != null:
+		$AnimatedSprite.flip_h = true
+		rotation_offset = 350 
+	elif player.looking_right:
+		$AnimatedSprite.flip_h = true
+		rotation_offset = 255
+	elif not player.looking_right:
+		$AnimatedSprite.flip_h = false
+		rotation_offset = 350 
+	
 func updateMovement(delta):
 	if grab_position != null:
 		global_position = grab_position
+		$AnimatedSprite.look_at(pivot.global_position)
+		$AnimatedSprite.rotation = $AnimatedSprite.rotation + deg2rad(90 + rotation_offset)
+#		$AnimatedSprite.rotation = deg2rad(180)
 		if Input.is_action_just_released("player_fire"):
 			grab_position = null
 			retracting = true
 			retraction_start = global_position
+			$AnimatedSprite.play("Open")
 			emit_signal("ungrabbed")
 #			apply_impulse(Vector2(),-return_vector*FORCE*mass)
 	else:
 		aim_vector = (get_global_mouse_position() - pivot.global_position).normalized()
+		$AnimatedSprite.look_at(get_global_mouse_position())
+		$AnimatedSprite.rotation = $AnimatedSprite.rotation + deg2rad(rotation_offset)
 		if not detached:
-			if pivot.global_position.distance_to(get_global_mouse_position()) > MIN_DISTANCE:
+			if pivot.global_position.distance_to(get_global_mouse_position()) > DISTANCE:
 				position = aim_vector * DISTANCE + pivot.position
-				$Sprite.look_at(get_global_mouse_position())
+			else:
+				global_position = get_global_mouse_position()
+				$AnimatedSprite.look_at(pivot.global_position)
+				$AnimatedSprite.rotation = $AnimatedSprite.rotation + deg2rad(rotation_offset + 180)
 		elif not fired and detached:
-				apply_impulse(Vector2(),aim_vector*FORCE*mass)
-				fired = true
+			$AnimatedSprite.play("Closed")
+			apply_impulse(Vector2(),aim_vector*FORCE*mass)
+			fired = true
 		elif detached:
 			if (pivot.global_position + player.velocity.normalized()*30).distance_to(global_position) >= extended_length:
 				# retract
@@ -84,6 +105,7 @@ func updateMovement(delta):
 					detached = false
 					fired = false
 					emit_signal("retracted")
+					$AnimatedSprite.play("Open")
 
 
 func _on_Grabber_area_entered(area):

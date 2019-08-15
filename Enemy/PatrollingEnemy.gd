@@ -13,10 +13,6 @@ signal shake
 func _ready():
 	var camera = get_tree().get_nodes_in_group("Main_Camera")
 	self.connect("shake",camera[0],"shake")
-	var boundaries = get_tree().get_nodes_in_group("Patrol_A")
-	for boundary in boundaries:
-		boundary.connect("",self,"")
-	pass # Replace with function body.
 
 
 var movement = Vector2()

@@ -12,7 +12,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-loops = 7
+loops = 3
 
 [node name="Anchor" type="StaticBody2D" parent="."]
 collision_layer = 0
