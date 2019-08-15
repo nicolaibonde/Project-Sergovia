@@ -12,6 +12,7 @@
 extents = Vector2( 450, 150 )
 
 [node name="World" type="Node2D"]
+editor/display_folded = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 423.404, 525.989 )
