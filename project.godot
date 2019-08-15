@@ -19,6 +19,11 @@ config/name="Project-Sergovia"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+mouse_cursor/custom_image="res://Assets/cursor.png"
+mouse_cursor/custom_image_hotspot=Vector2( 10, 10 )
+
 [input]
 
 player_left={

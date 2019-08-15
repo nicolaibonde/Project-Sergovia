@@ -43,8 +43,8 @@ position = Vector2( 422.062, 191.469 )
 position = Vector2( 668.747, 0.797089 )
 
 [node name="PatrollingBoundry3" parent="." groups=[
-"Patrol_A",
 "Patrol_B",
+"Patrol_A",
 ] instance=ExtResource( 4 )]
 position = Vector2( 616.745, 248.796 )
 
@@ -91,13 +91,21 @@ position = Vector2( 777.445, 542.034 )
 [node name="PatrollingBoundry" parent="." groups=[
 "Patrol_A",
 ] instance=ExtResource( 4 )]
-position = Vector2( 542.442, 570.602 )
+position = Vector2( 703.495, 570.602 )
 
 [node name="PatrollingBoundry2" parent="." groups=[
 "Patrol_A",
 ] instance=ExtResource( 4 )]
-position = Vector2( 1078.82, 573.411 )
+position = Vector2( 980.925, 573.411 )
 
 [node name="PatrollingEnemy4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 60.3108, 541.319 )
+position = Vector2( 60.3108, 546.153 )
+health = 1
+
+[node name="PatrollingEnemy5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 60.3108, 483.17 )
+health = 1
+
+[node name="PatrollingEnemy6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 61.4771, 417.854 )
 health = 1
