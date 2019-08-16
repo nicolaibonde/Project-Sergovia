@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Project-Sergovia"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Scenes/Splash Screens.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneChanger="*res://Scenes/SceneChanger.tscn"
 
 [display]
 
@@ -57,4 +61,5 @@ player_fire={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_clear_color=Color( 0.0784314, 0.133333, 0.25098, 1 )
 environment/default_environment="res://default_env.tres"
