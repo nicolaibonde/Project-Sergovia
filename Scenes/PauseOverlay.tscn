@@ -63,33 +63,41 @@ margin_bottom = 384.0
 rect_min_size = Vector2( 200, 0 )
 
 [node name="Resume" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
-margin_right = 286.0
+margin_left = 43.0
+margin_right = 243.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 200, 52 )
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Resume"
 
 [node name="Restart" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_left = 43.0
 margin_top = 56.0
-margin_right = 286.0
+margin_right = 243.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 200, 52 )
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Restart"
 
 [node name="Level Select" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_left = 43.0
 margin_top = 112.0
-margin_right = 286.0
+margin_right = 243.0
 margin_bottom = 164.0
 rect_min_size = Vector2( 200, 52 )
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Level Select"
 
 [node name="Main Menu" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_left = 43.0
 margin_top = 168.0
-margin_right = 286.0
+margin_right = 243.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 200, 52 )
+size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
 [connection signal="pressed" from="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Resume" to="Pause" method="_on_Resume_pressed"]

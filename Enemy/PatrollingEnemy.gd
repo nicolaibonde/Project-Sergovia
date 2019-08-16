@@ -30,16 +30,32 @@ func _physics_process(delta):
 	movement = movement_dir * toggle *movement_speed
 	position += movement * delta
 
+func _process(delta):
+	if timer >= 0:
+		timer -= delta
+
+var cooldown = 0.2
+var timer = cooldown
+
+
+
 func turn_around():
-	if toggle == 1:
-		toggle = -1
-		$AnimatedSprite.flip_h = false
-	else:
-		toggle = 1
-		$AnimatedSprite.flip_h = true
+	if timer <= 0:
+		timer = cooldown
+		if toggle == 1:
+			toggle = -1
+			$AnimatedSprite.flip_h = false
+		else:
+			toggle = 1
+			$AnimatedSprite.flip_h = true
 
 func die():
+	set_collision_layer_bit(10,0)
 	emit_signal("shake",0.3,80,30)
+	movement_speed = -60 * toggle
+	movement_dir = Vector2(0,1)
+	$AnimationPlayer.play("Death")
+	yield($AnimationPlayer,"animation_finished")
 	queue_free()
 	pass
 
@@ -47,7 +63,15 @@ func damage(amount):
 	health -= amount
 	if health <= 0:
 		die()
+	else:
+		$AnimationPlayer.play("Damage")
 	return health
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Player"):
+		if body.has_method("damage"):
+			body.damage(1)

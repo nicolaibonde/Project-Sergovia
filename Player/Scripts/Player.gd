@@ -20,65 +20,71 @@ var chain_anchor = Vector2()
 
 var looking_right = true
 
+var health = 3
+
 func _ready():
 	chain_anchor = $Chain.position
 	
 
 func _physics_process(delta):
-
-	velocity.y += GRAVITY
-	if grab_position != null:
-		var pivot = $Chain.global_position
-		var current_chain = pivot - grab_position
-		var error = current_chain - current_chain.normalized()*max_chain_length
-		if current_chain.length() - max_chain_length > 0:
-			velocity -= error
-			#TODO dont do opposite velocity, just move the player to the positoo
+	if health > 0:
+		velocity.y += GRAVITY
+		if grab_position != null:
+			var pivot = $Chain.global_position
+			var current_chain = pivot - grab_position
+			var error = current_chain - current_chain.normalized()*max_chain_length
+			if current_chain.length() - max_chain_length > 0:
+				velocity -= error
+				#TODO dont do opposite velocity, just move the player to the positoo
+		else:
+			pass
+		
+		
+		# Better platforming gravity 
+		if ( velocity.y > 0 ):
+			velocity.y += GRAVITY * (FALL_MULTIPLIER - 1)
+		
+		if velocity.y < 0 and !Input.is_action_pressed("player_jump"):
+			velocity.y += GRAVITY * (LOW_JUMP_MULTIPLIER - 1)
+		
+		#TODO: Fix deacceleration with controller, now results in jitter
+		if Input.is_action_pressed("player_left"):
+			velocity.x -= ACCELERATION
+			anim_left()
+			looking_right = false
+			
+		if Input.is_action_pressed("player_right"):
+			velocity.x += ACCELERATION
+			anim_right()
+			looking_right = true
+	
+		if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and is_on_floor():
+			anim_stop()
+			velocity.x =  lerp(velocity.x,0,1)
+			
+		velocity.x = clamp(velocity.x,-top_move_speed,top_move_speed)
+	
+		if is_on_ceiling():
+			velocity.y = abs(velocity.y)/5
+	
+		if is_on_floor():
+			velocity.y = 0
+	
+	
+		if Input.is_action_just_pressed("player_jump"):
+			if $FloorRay.is_colliding() or is_on_floor():
+				velocity.y = -JUMP_VELOCITY
+				anim_jump()
+		
+		if grab_position != null:
+			velocity = velocity *0.98
+			
+		move_and_slide(velocity, UP)
+	
 	else:
-		pass
-	
-	
-	# Better platforming gravity 
-	if ( velocity.y > 0 ):
-		velocity.y += GRAVITY * (FALL_MULTIPLIER - 1)
-	
-	if velocity.y < 0 and !Input.is_action_pressed("player_jump"):
-		velocity.y += GRAVITY * (LOW_JUMP_MULTIPLIER - 1)
-	
-	#TODO: Fix deacceleration with controller, now results in jitter
-	if Input.is_action_pressed("player_left"):
-		velocity.x -= ACCELERATION
-		anim_left()
-		looking_right = false
-		
-	if Input.is_action_pressed("player_right"):
-		velocity.x += ACCELERATION
-		anim_right()
-		looking_right = true
-
-	if not Input.is_action_pressed("player_left") and not Input.is_action_pressed("player_right") and is_on_floor():
-		anim_stop()
-		velocity.x =  lerp(velocity.x,0,1)
-		
-	velocity.x = clamp(velocity.x,-top_move_speed,top_move_speed)
-
-	if is_on_ceiling():
-		velocity.y = abs(velocity.y)/5
-
-	if is_on_floor():
-		velocity.y = 0
-
-
-	if Input.is_action_just_pressed("player_jump"):
-		if $FloorRay.is_colliding() or is_on_floor():
-			velocity.y = -JUMP_VELOCITY
-			anim_jump()
-	
-	if grab_position != null:
-		velocity = velocity *0.98
-		
-	move_and_slide(velocity, UP)
-	
+		if $AnimationPlayer.is_playing():
+			var movement = Vector2(0,1) * -60
+			position += movement * delta
 	
 func on_grab(grab_pos, max_dist):
 	grab_position = grab_pos
@@ -86,6 +92,25 @@ func on_grab(grab_pos, max_dist):
 	
 func on_release():
 	grab_position = null
+
+
+signal damage
+signal death
+
+func damage(amount):
+	if $AnimationPlayer.is_playing():
+		pass
+	else:
+		emit_signal("damage")
+		health -= amount
+		if health <= 0:
+			die()
+		else:
+			$AnimationPlayer.play("Damage")
+
+func die():
+	$AnimationPlayer.play("Die")
+	emit_signal("death")
 	
 ################### Animations
 
