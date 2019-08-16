@@ -104,15 +104,16 @@ signal damage
 signal death
 
 func damage(amount):
-	if $AnimationPlayer.is_playing():
-		pass
-	else:
-		emit_signal("damage")
-		health -= amount
-		if health <= 0:
-			die()
+	if health > 0:
+		if $AnimationPlayer.is_playing():
+			pass
 		else:
-			$AnimationPlayer.play("Damage")
+			emit_signal("damage")
+			health -= amount
+			if health <= 0:
+				die()
+			else:
+				$AnimationPlayer.play("Damage")
 
 func die():
 	$AnimationPlayer.play("Die")
