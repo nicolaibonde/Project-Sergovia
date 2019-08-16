@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/UI/SPG-spash.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Scripts/AnimationPlayer.gd" type="Script" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in_out"
 length = 10.5

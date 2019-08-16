@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/HUDOverlay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/PauseOverlay.tscn" type="PackedScene" id=2]
@@ -9,10 +9,7 @@
 [ext_resource path="res://Enemy/PatrollingBoundry.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemy/PatrollingEnemy.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemy/StationaryEnemy.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Assets/tiles/tile2.png" type="Texture" id=10]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 450, 150 )
+[ext_resource path="res://Assets/tiles/tiles.tres" type="TileSet" id=10]
 
 [node name="Tower1" type="Node"]
 
@@ -36,7 +33,7 @@ position = Vector2( 1065.78, -131.447 )
 texture = ExtResource( 6 )
 
 [node name="GrabPoint3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 947.158, 428.337 )
+position = Vector2( 1035.95, 400.481 )
 
 [node name="GrabPoint6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 601.874, 282.787 )
@@ -92,125 +89,6 @@ position = Vector2( 1273.97, 633.186 )
 position = Vector2( 33.9395, 625.707 )
 health = 1
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 218.668, 730.881 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 665.439, 731.19 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 1107.27, 733.578 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 834.623, 344.667 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 1280.36, 344.667 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D5"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D6" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( -31.1191, -75.0185 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D6"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
-[node name="StaticBody2D7" type="StaticBody2D" parent="."]
-editor/display_folded = true
-position = Vector2( 411.363, -78.272 )
-scale = Vector2( 0.5, 0.5 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D7"]
-texture = ExtResource( 10 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 900, 300 )
-
 [node name="PatrollingBoundry6" parent="." groups=[
 "Patrol_A",
 ] instance=ExtResource( 7 )]
@@ -225,3 +103,10 @@ position = Vector2( 121.71, 654.418 )
 position = Vector2( 127.872, 455.658 )
 movement_dir = Vector2( 0, 1 )
 spriteRotation = 90.0
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 10 )
+cell_size = Vector2( 150, 150 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( 65543, 4, 0, 131079, 7, 0, 196615, 7, 0, 262151, 6, 0, 327681, 0, 0, 327682, 2, 0, 327683, 2, 0, 327684, 1, 0, 327687, 5, 0 )
