@@ -26,7 +26,6 @@ SceneChanger="*res://Scenes/SceneChanger.tscn"
 [display]
 
 window/size/resizable=false
-mouse_cursor/custom_image="res://Assets/cursor.png"
 
 [input]
 
@@ -55,6 +54,10 @@ player_fire={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":4,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

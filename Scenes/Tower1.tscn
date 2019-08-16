@@ -11,7 +11,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 450, 150 )
 
-[node name="World" type="Node2D"]
+[node name="Tower1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 423.404, 525.989 )

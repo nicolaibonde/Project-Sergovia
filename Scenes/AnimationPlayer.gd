@@ -11,7 +11,7 @@ onready var main_menu = get_node(main_menu_path)
 func _ready():
 	play("fade_in_out")
 	yield(self,"animation_finished")
-	SceneChanger.change_scene("res://Scenes/MainMenu.tscn",0)
+	assert(get_tree().change_scene("res://Scenes/MainMenu.tscn") == OK)
 	pass # Replace with function body.
 
 

@@ -1,5 +1,59 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Control" type="Control"]
+[ext_resource path="res://Scenes/LevelSelect.gd" type="Script" id=1]
+[ext_resource path="res://Assets/UI/LevelSelect.png" type="Texture" id=2]
+
+[node name="LevelSelect" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+
+[node name="Tower1" type="Button" parent="CenterContainer/TextureRect"]
+margin_left = 240.404
+margin_top = 217.472
+margin_right = 302.404
+margin_bottom = 237.472
+text = "Tower 1"
+
+[node name="Tower2" type="Button" parent="CenterContainer/TextureRect"]
+margin_left = 271.356
+margin_top = 421.098
+margin_right = 333.356
+margin_bottom = 441.098
+text = "Tower 2"
+
+[node name="Tower3" type="Button" parent="CenterContainer/TextureRect"]
+margin_left = 573.537
+margin_top = 537.572
+margin_right = 635.537
+margin_bottom = 557.572
+text = "Tower 3"
+
+[node name="Tower4" type="Button" parent="CenterContainer/TextureRect"]
+margin_left = 598.786
+margin_top = 305.438
+margin_right = 660.786
+margin_bottom = 325.438
+text = "Tower 4"
+
+[node name="Back" type="Button" parent="CenterContainer/TextureRect"]
+margin_left = 945.099
+margin_top = 561.784
+margin_right = 999.099
+margin_bottom = 581.784
+text = "Back"
+[connection signal="pressed" from="CenterContainer/TextureRect/Tower1" to="." method="_on_Tower1_pressed"]
+[connection signal="pressed" from="CenterContainer/TextureRect/Tower2" to="." method="_on_Tower2_pressed"]
+[connection signal="pressed" from="CenterContainer/TextureRect/Tower3" to="." method="_on_Tower3_pressed"]
+[connection signal="pressed" from="CenterContainer/TextureRect/Tower4" to="." method="_on_Tower4_pressed"]
+[connection signal="pressed" from="CenterContainer/TextureRect/Back" to="." method="_on_Back_pressed"]
