@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Pause.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/roboto/Roboto-Condensed.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 75
+extra_spacing_bottom = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+extra_spacing_top = 5
+extra_spacing_bottom = 5
+font_data = ExtResource( 3 )
+
+[node name="PauseOverlay" type="CanvasLayer"]
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.352941 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Pause/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 300.0
+margin_right = -300.0
+
+[node name="ColorRect" type="ColorRect" parent="Pause/ColorRect/MarginContainer"]
+margin_right = 424.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0.690196 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Pause/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/ColorRect/CenterContainer"]
+margin_left = 369.0
+margin_top = 108.0
+margin_right = 655.0
+margin_bottom = 492.0
+custom_constants/separation = 25
+
+[node name="Label" type="Label" parent="Pause/ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 286.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 1 )
+text = "PAUSED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause/ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 164.0
+margin_right = 286.0
+margin_bottom = 384.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Resume" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_right = 286.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 200, 52 )
+custom_fonts/font = SubResource( 2 )
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 286.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 200, 52 )
+custom_fonts/font = SubResource( 2 )
+text = "Restart"
+
+[node name="Level Select" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 112.0
+margin_right = 286.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 200, 52 )
+custom_fonts/font = SubResource( 2 )
+text = "Level Select"
+
+[node name="Main Menu" type="Button" parent="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 286.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 200, 52 )
+custom_fonts/font = SubResource( 2 )
+text = "Main Menu"
+[connection signal="pressed" from="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Resume" to="Pause" method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Restart" to="Pause" method="_on_Restart_pressed"]
+[connection signal="pressed" from="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Level Select" to="Pause" method="_on_Level_Select_pressed"]
+[connection signal="pressed" from="Pause/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Main Menu" to="Pause" method="_on_Main_Menu_pressed"]

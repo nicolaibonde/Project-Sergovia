@@ -6,7 +6,7 @@ onready var anim_player = $AnimationPlayer
 onready var black = $Control/ColorRect
 
 
-func change_scene(path, delay = 0.5):
+func change_scene(path, delay = 0.0):
 	yield(get_tree().create_timer(delay), "timeout")
 	anim_player.play("fade_out")
 	yield(anim_player, "animation_finished")

@@ -56,7 +56,7 @@ func _physics_process(delta):
 		rotation_offset = 255
 	elif not player.looking_right:
 		$AnimatedSprite.flip_h = false
-		rotation_offset = 350 
+		rotation_offset = 350 -90
 	
 func updateMovement(delta):
 	if grab_position != null:

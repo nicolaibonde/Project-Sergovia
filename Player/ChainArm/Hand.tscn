@@ -1,24 +1,26 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/ChainArm/Scripts/Hand.gd" type="Script" id=1]
-[ext_resource path="res://Assets/player-hand/hand-grabbing.png" type="Texture" id=2]
-[ext_resource path="res://Assets/player-hand/hand-loose.png" type="Texture" id=3]
+[ext_resource path="res://Assets/hand/hand-loose.png" type="Texture" id=2]
+[ext_resource path="res://Assets/player-hand/hand-grabbing.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 18.5261
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 11.2252
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
-"loop": false,
-"name": "Closed",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "Open",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "Closed",
+"speed": 0.0
 } ]
 
 [node name="Hand" type="RigidBody2D"]

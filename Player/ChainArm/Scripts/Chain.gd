@@ -14,7 +14,6 @@ var chainHand
 func _ready():
 	var parent = $Anchor
 	for i in range(loops):
-		print(i)
 		var child = addLoop(parent)
 		addLink(parent, child)
 		parent = child

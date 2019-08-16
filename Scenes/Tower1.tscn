@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GrabPoint.tscn" type="PackedScene" id=2]
@@ -7,11 +7,12 @@
 [ext_resource path="res://Enemy/PatrollingEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemy/StationaryEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/tiles/tile2.png" type="Texture" id=7]
+[ext_resource path="res://Scenes/PauseOverlay.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 450, 150 )
 
-[node name="Tower1" type="Node2D"]
+[node name="Tower1" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 423.404, 525.989 )
@@ -37,25 +38,25 @@ rotation = 1.5708
 "Patrol_B",
 "Patrol_A",
 ] instance=ExtResource( 4 )]
-position = Vector2( 725.746, 252.312 )
+position = Vector2( 723.413, 212.656 )
 
 [node name="PatrollingBoundry4" parent="." groups=[
 "Patrol_A",
 ] instance=ExtResource( 4 )]
-position = Vector2( 1034.47, 241.182 )
+position = Vector2( 1035.64, 210.857 )
 
 [node name="PatrollingEnemy2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 862.635, 231.158 )
+position = Vector2( 862.635, 206.665 )
 
 [node name="PatrollingEnemy3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1180.53, 232.325 )
+position = Vector2( 1216.69, 202 )
 boundry_group = "Patrol_B"
 movement_speed = 150.0
 
 [node name="PatrollingBoundry5" parent="." groups=[
 "Patrol_B",
 ] instance=ExtResource( 4 )]
-position = Vector2( 1369.56, 235.454 )
+position = Vector2( 1367.23, 202.796 )
 
 [node name="GrabPoint4" parent="." instance=ExtResource( 2 )]
 position = Vector2( 868.276, -385.5 )
@@ -66,6 +67,8 @@ rotation = -1.5708
 
 [node name="PatrollingEnemy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 972.592, 601.809 )
+movement_speed = 200.0
+EnemyAnimation = "Enemy2"
 
 [node name="PatrollingBoundry" parent="." groups=[
 "Patrol_A",
@@ -213,3 +216,6 @@ position = Vector2( 121.71, 654.418 )
 [node name="PatrollingEnemy5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 127.872, 455.658 )
 movement_dir = Vector2( 0, 1 )
+spriteRotation = 90.0
+
+[node name="PauseOverlay" parent="." instance=ExtResource( 8 )]
