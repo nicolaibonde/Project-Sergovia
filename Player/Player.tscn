@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ChainArm/Chain.tscn" type="PackedScene" id=2]
@@ -19,7 +19,8 @@
 [ext_resource path="res://Assets/player-idle/player-idle-2.png" type="Texture" id=17]
 [ext_resource path="res://Assets/player-idle/player-idle-3.png" type="Texture" id=18]
 [ext_resource path="res://Assets/player-idle/player-idle-4.png" type="Texture" id=19]
-[ext_resource path="res://Player/Camera2D.gd" type="Script" id=20]
+[ext_resource path="res://Assets/player-jump/player-jump.png" type="Texture" id=20]
+[ext_resource path="res://Player/Camera2D.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,6 +33,11 @@ animations = [ {
 "loop": true,
 "name": "Idle",
 "speed": 6.0
+}, {
+"frames": [ ExtResource( 20 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -176,8 +182,7 @@ loops = 6
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
 frames = SubResource( 1 )
-animation = "Walk"
-frame = 3
+animation = "Jump"
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -194,7 +199,7 @@ drag_margin_left = 0.05
 drag_margin_top = 0.05
 drag_margin_right = 0.05
 drag_margin_bottom = 0.0
-script = ExtResource( 20 )
+script = ExtResource( 21 )
 
 [node name="FloorRay" type="RayCast2D" parent="."]
 enabled = true

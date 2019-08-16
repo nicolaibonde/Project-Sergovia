@@ -68,13 +68,19 @@ func _physics_process(delta):
 			velocity.y = abs(velocity.y)/5
 	
 		if is_on_floor():
+			jumping = false
 			velocity.y = 0
+		
+		if not $FloorRay.is_colliding():
+			jumping = true
+			anim_jump()		
 	
 	
 		if Input.is_action_just_pressed("player_jump"):
 			if $FloorRay.is_colliding() or is_on_floor():
 				velocity.y = -JUMP_VELOCITY
 				anim_jump()
+				jumping = true
 		
 		if grab_position != null:
 			velocity = velocity *0.98
@@ -115,23 +121,26 @@ func die():
 ################### Animations
 
 
+var jumping = false
+
 func anim_stop():
 	$AnimatedSprite.play("Idle")
 	
 func anim_left():
-	$AnimatedSprite.play("Walk")
+	if not jumping:
+		$AnimatedSprite.play("Walk")
 	$Chain.position.x = -chain_anchor.x
 	$AnimatedSprite.flip_h = true
 
 func anim_right():
-	$AnimatedSprite.play("Walk")
+	if not jumping:
+		$AnimatedSprite.play("Walk")
 	$Chain.position.x = chain_anchor.x
 	$AnimatedSprite.flip_h = false
 	pass
 
 func anim_jump():
-	$AnimatedSprite.play("Idle")
-	$AnimatedSprite.stop()
+	$AnimatedSprite.play("Jump")
 	pass
 	
 	

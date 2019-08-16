@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/roboto/Roboto-Condensed.ttf" type="DynamicFontData" id=3]
 
@@ -63,14 +63,14 @@ margin_right = 414.0
 margin_bottom = 328.0
 rect_min_size = Vector2( 200, 0 )
 
-[node name="Restart" type="Button" parent="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
+[node name="Retry" type="Button" parent="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
 margin_left = 107.0
 margin_right = 307.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 200, 52 )
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
-text = "Restart"
+text = "Retry"
 
 [node name="Level Select" type="Button" parent="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer"]
 margin_left = 107.0
@@ -91,6 +91,6 @@ rect_min_size = Vector2( 200, 52 )
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
 text = "Main Menu"
-[connection signal="pressed" from="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Restart" to="GameOver" method="_on_Restart_pressed"]
+[connection signal="pressed" from="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Retry" to="GameOver" method="_on_Restart_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Level Select" to="GameOver" method="_on_Level_Select_pressed"]
 [connection signal="pressed" from="GameOver/ColorRect/CenterContainer/VBoxContainer/VBoxContainer/Main Menu" to="GameOver" method="_on_Main_Menu_pressed"]

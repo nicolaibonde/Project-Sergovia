@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Pause.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Scripts/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/roboto/Roboto-Black.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/roboto/Roboto-Condensed.ttf" type="DynamicFontData" id=3]
 
@@ -19,6 +19,7 @@ font_data = ExtResource( 3 )
 
 [node name="Pause" type="Control" parent="."]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
