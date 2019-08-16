@@ -12,7 +12,6 @@
 extents = Vector2( 450, 150 )
 
 [node name="World" type="Node2D"]
-editor/display_folded = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 423.404, 525.989 )
@@ -200,3 +199,17 @@ shape = SubResource( 1 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 900, 300 )
+
+[node name="PatrollingBoundry6" parent="." groups=[
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 124.36, 18.4097 )
+
+[node name="PatrollingBoundry7" parent="." groups=[
+"Patrol_A",
+] instance=ExtResource( 4 )]
+position = Vector2( 121.71, 654.418 )
+
+[node name="PatrollingEnemy5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 127.872, 455.658 )
+movement_dir = Vector2( 0, 1 )

@@ -6,6 +6,7 @@ extends KinematicBody2D
 
 export (String) var boundry_group = "Patrol_A"
 export (float) var movement_speed = 100
+export (Vector2) var movement_dir = Vector2(1,0)
 export (int) var health = 3
 signal shake
 
@@ -13,13 +14,14 @@ signal shake
 func _ready():
 	var camera = get_tree().get_nodes_in_group("Main_Camera")
 	self.connect("shake",camera[0],"shake")
+	movement_dir = movement_dir.normalized()
 
 
 var movement = Vector2()
 var toggle = -1
 
 func _physics_process(delta):
-	movement = Vector2(toggle*movement_speed,0)
+	movement = movement_dir * toggle *movement_speed
 	position += movement * delta
 
 func turn_around():
