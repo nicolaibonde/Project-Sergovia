@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Project-Sergovia"
-run/main_scene="res://Scenes/Tower1.tscn"
+run/main_scene="res://Scenes/Splash Screens.tscn"
 config/icon="res://icon.png"
 
 [autoload]
