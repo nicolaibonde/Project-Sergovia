@@ -122,6 +122,7 @@ func _on_Grabber_body_entered(body):
 	if fired and not retracting and body.is_in_group("Punchable"): 
 		print("Punching: " + body.name)
 		if body.has_method("damage"):
+			AudioManager.playSample("res://SoundEffects/Punch.wav",-25)
 			var hp = body.damage(1)
 			if hp > 0:
 				emit_signal("shake",0.1,40,8)

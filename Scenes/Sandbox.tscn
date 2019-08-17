@@ -12,6 +12,7 @@
 [ext_resource path="res://Assets/tiles/tiles.tres" type="TileSet" id=10]
 
 [node name="Tower1" type="Node"]
+editor/display_folded = true
 
 [node name="HUDOverlay" parent="." instance=ExtResource( 1 )]
 
@@ -40,14 +41,11 @@ position = Vector2( 601.874, 282.787 )
 rotation = 1.5708
 
 [node name="PatrollingBoundry3" parent="." groups=[
-"Patrol_A",
 "Patrol_B",
 ] instance=ExtResource( 7 )]
 position = Vector2( 723.413, 212.656 )
 
-[node name="PatrollingBoundry4" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 7 )]
+[node name="PatrollingBoundry4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1035.64, 210.857 )
 
 [node name="PatrollingEnemy2" parent="." instance=ExtResource( 8 )]
@@ -75,28 +73,20 @@ position = Vector2( 972.592, 601.809 )
 movement_speed = 200.0
 EnemyAnimation = "Enemy2"
 
-[node name="PatrollingBoundry" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 7 )]
+[node name="PatrollingBoundry" parent="." instance=ExtResource( 7 )]
 position = Vector2( 737.589, 630.377 )
 
-[node name="PatrollingBoundry2" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 7 )]
+[node name="PatrollingBoundry2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1273.97, 633.186 )
 
 [node name="PatrollingEnemy4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 33.9395, 625.707 )
 health = 1
 
-[node name="PatrollingBoundry6" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 7 )]
+[node name="PatrollingBoundry6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 124.36, 18.4097 )
 
-[node name="PatrollingBoundry7" parent="." groups=[
-"Patrol_A",
-] instance=ExtResource( 7 )]
+[node name="PatrollingBoundry7" parent="." instance=ExtResource( 7 )]
 position = Vector2( 121.71, 654.418 )
 
 [node name="PatrollingEnemy5" parent="." instance=ExtResource( 8 )]

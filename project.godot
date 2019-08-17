@@ -22,6 +22,8 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneChanger="*res://Scenes/SceneChanger.tscn"
+AudioManager="*res://Scenes/AudioManager.tscn"
+Globals="*res://Scenes/Globals.tscn"
 
 [display]
 

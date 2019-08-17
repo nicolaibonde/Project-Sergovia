@@ -3,7 +3,6 @@
 [ext_resource path="res://Scenes/Scripts/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/roboto/Roboto-Condensed.ttf" type="DynamicFontData" id=2]
 
-
 [sub_resource type="Theme" id=1]
 
 [sub_resource type="DynamicFont" id=2]

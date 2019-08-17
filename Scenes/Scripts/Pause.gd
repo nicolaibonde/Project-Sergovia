@@ -28,20 +28,24 @@ func pause():
 
 func _on_Resume_pressed():
 	pause()	
+	AudioManager.playSample("res://SoundEffects/Select.wav",-30)
 
 
 func _on_Restart_pressed():
 	pause()
+	AudioManager.playSample("res://SoundEffects/Select.wav",-30)
 	get_tree().reload_current_scene()
 
 
 func _on_Level_Select_pressed():
 	pause()
+	AudioManager.playSample("res://SoundEffects/Select.wav",-30)
 	SceneChanger.change_scene("res://Scenes/LevelSelect.tscn")
 
 
 func _on_Main_Menu_pressed():
 	pause()
+	AudioManager.playSample("res://SoundEffects/Select.wav",-30)
 	SceneChanger.change_scene("res://Scenes/MainMenu.tscn")
 
 

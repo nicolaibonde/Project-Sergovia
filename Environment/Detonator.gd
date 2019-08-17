@@ -4,6 +4,8 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
+export (int) var level = 0
+
 export (int) var health = 1
 signal shake
 signal detonation
@@ -17,7 +19,17 @@ func _ready():
 
 
 func detonate():
-	emit_signal("shake",0.3,80,10)
+	if level == 0:
+		Globals.Tower1Completed = true
+	elif level == 1:
+		Globals.Tower2Completed = true
+	elif level == 2:
+		Globals.Tower3Completed = true
+	elif level == 3:
+		Globals.Tower4Completed = true
+	
+	emit_signal("shake",10,30,75)
+	AudioManager.playSample("res://SoundEffects/Explosion1.wav",-10)
 	var exit = get_tree().get_nodes_in_group("ExitPoint")[0]
 	emit_signal("detonation",exit.global_position)
 

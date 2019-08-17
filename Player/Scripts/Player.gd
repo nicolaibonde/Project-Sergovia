@@ -88,6 +88,7 @@ func _physics_process(delta):
 		
 			if Input.is_action_just_pressed("player_jump"):
 				if on_floor or is_on_floor():
+					AudioManager.playSample("res://SoundEffects/Jump.wav",-30)
 					velocity.y = -JUMP_VELOCITY
 					anim_jump()
 					jumping = true
@@ -126,6 +127,7 @@ func damage(amount):
 		if $AnimationPlayer.is_playing():
 			pass
 		else:
+			AudioManager.playSample("res://SoundEffects/Damaged.wav",-25)
 			emit_signal("damage")
 			health -= amount
 			if health <= 0:
