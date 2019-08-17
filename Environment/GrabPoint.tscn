@@ -8,7 +8,6 @@ radius = 50.0
 [node name="GrabPoint" type="Area2D" groups=[
 "grabbable",
 ]]
-position = Vector2( 654.547, 152.451 )
 collision_layer = 64
 collision_mask = 32
 __meta__ = {

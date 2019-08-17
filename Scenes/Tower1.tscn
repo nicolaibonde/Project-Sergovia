@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/GameOverOverlay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/HUDOverlay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/PauseOverlay.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/tiles/tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Environment/Crate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy/StationaryEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Environment/GrabPoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemy/PatrollingBoundry.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemy/PatrollingEnemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Environment/Detonator.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Environment/ExitPoint.tscn" type="PackedScene" id=12]
 
 [node name="Tower1" type="Node2D"]
 
@@ -13,4 +21,142 @@
 
 [node name="PauseOverlay" parent="." instance=ExtResource( 3 )]
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="BackgroundTiles" type="TileMap" parent="."]
+modulate = Color( 0.380392, 0.290196, 0.364706, 1 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 50, 50 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -2818048, 6, 0, -2621440, 6, 0, -2424832, 6, 0, -2293759, 2, 0, -2293758, 2, 0, -2293755, 2, 0, -2293752, 2, 0, -1638369, 7, 0, -1441761, 7, 0, -1245153, 7, 0, -1114093, 2, 0, -1114090, 3, 0, -1114068, 3, 0, -1114067, 3, 0, -1114064, 3, 0, 0, 6, 0, 65536, 7, 0, 196608, 7, 0, 393216, 7, 0, 589824, 7, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 460.744, -1792.51 )
+
+[node name="Crate12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1619.8, -900.339 )
+
+[node name="Crate15" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1146.97, -703.591 )
+
+[node name="Crate13" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1641.77, -1025.92 )
+
+[node name="Crate14" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1622.38, -1147.4 )
+
+[node name="StationaryEnemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1176.63, -10000 )
+
+[node name="GrabPoint5" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2026.45, -443.051 )
+
+[node name="GrabPoint4" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1721.82, -392.552 )
+
+[node name="GrabPoint3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1371.42, -343.165 )
+
+[node name="GrabPoint6" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2253.09, -769.296 )
+rotation = -1.51294
+
+[node name="GrabPoint7" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2543.53, -1050.1 )
+rotation = 1.55302
+
+[node name="GrabPoint8" parent="." instance=ExtResource( 8 )]
+position = Vector2( 2171.13, -1190.7 )
+rotation = -0.0332915
+
+[node name="GrabPoint9" parent="." instance=ExtResource( 8 )]
+position = Vector2( 154.739, -1171.04 )
+rotation = -1.50362
+
+[node name="GrabPoint10" parent="." instance=ExtResource( 8 )]
+position = Vector2( 445.396, -1284.23 )
+rotation = 1.39042
+
+[node name="GrabPoint12" parent="." instance=ExtResource( 8 )]
+position = Vector2( 444.494, -1536.93 )
+rotation = 1.43394
+
+[node name="GrabPoint11" parent="." instance=ExtResource( 8 )]
+position = Vector2( 154.791, -1435.85 )
+rotation = -1.55791
+
+[node name="GrabPoint13" parent="." instance=ExtResource( 8 )]
+position = Vector2( 155.741, -1679.78 )
+rotation = -1.55791
+
+[node name="GrabPoint14" parent="." instance=ExtResource( 8 )]
+position = Vector2( 156.552, -1827.12 )
+rotation = -1.55791
+
+[node name="Vertical" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 50, 50 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -3080174, 4, 0, -2949120, 5, 0, -2883566, 6, 0, -2686958, 6, 0, -2490350, 6, 0, -2424832, 4, 0, -2359245, 6, 0, -2293742, 5, 0, -2228224, 7, 0, -2228215, 6, 0, -2162637, 7, 0, -2031616, 7, 0, -2031607, 6, 0, -1966029, 6, 0, -1835008, 7, 0, -1834999, 6, 0, -1769441, 5, 0, -1769430, 5, 0, -1769421, 7, 0, -1638400, 7, 0, -1638391, 5, 0, -1572813, 6, 0, -1441792, 6, 0, -1376205, 6, 0, -1245184, 6, 0, -1179648, 7, 0, -1179597, 6, 0, -1048576, 6, 0, -1048550, 4, 0, -1048543, 4, 0, -1048537, 4, 0, -983023, 5, 0, -983001, 7, 0, -982989, 6, 0, -917471, 6, 0, -851968, 6, 0, -851942, 6, 0, -786393, 5, 0, -786381, 6, 0, -720863, 5, 0, -655360, 7, 0, -655334, 5, 0, -589773, 7, 0, -458752, 6, 0, -393165, 6, 0, -262144, 7, 0, -196557, 6, 0, -65536, 6, 0, 51, 6, 0, 131072, 5, 0, 196659, 6, 0, 393267, 7, 0, 589875, 6, 0 )
+
+[node name="Horizontal" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 50, 50 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -3080192, 2, 0, -3080189, 3, 0, -3080186, 3, 0, -3080183, 3, 0, -3080180, 3, 0, -3080177, 3, 0, -3080174, 3, 0, -3080171, 3, 0, -3080168, 3, 0, -2293752, 0, 0, -2293749, 3, 0, -2293746, 3, 0, -2293743, 3, 0, -2293740, 3, 0, -2293737, 3, 0, -2293734, 3, 0, -1900516, 0, 0, -1900513, 2, 0, -1900510, 3, 0, -1900507, 2, 0, -1900504, 2, 0, -1900501, 3, 0, -1900498, 2, 0, -1900495, 2, 0, -1900492, 2, 0, -1048577, 2, 0, -1114110, 2, 0, -1114107, 3, 0, -1114104, 3, 0, -1114101, 2, 0, -1114098, 3, 0, -1114095, 1, 0, -1114088, 0, 0, -1114085, 2, 0, -1114082, 2, 0, -1114079, 2, 0, -1114076, 2, 0, -1114073, 2, 0, -1114070, 1, 0, -851953, 0, 0, -851950, 2, 0, -851947, 2, 0, -851944, 1, 0, -524243, 0, 0, -524240, 2, 0, -524237, 2, 0, 21, 0, 0, 24, 3, 0, 27, 3, 0, 30, 2, 0, 33, 3, 0, 36, 3, 0, 39, 2, 0, 42, 3, 0, 45, 2, 0, 48, 3, 0, 51, 2, 0, 589824, 2, 0, 589827, 2, 0, 589830, 2, 0, 589833, 3, 0, 589836, 3, 0, 589839, 2, 0, 589842, 3, 0, 589845, 2, 0, 589848, 2, 0, 589851, 3, 0, 589854, 2, 0, 589857, 3, 0, 589860, 2, 0, 589863, 2, 0, 589866, 2, 0, 589869, 2, 0, 589872, 2, 0, 589875, 2, 0 )
+
+[node name="Crate" parent="." instance=ExtResource( 6 )]
+position = Vector2( 832.549, 400.091 )
+
+[node name="Crate2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 958.426, 402.609 )
+
+[node name="Crate8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1081.79, 402.609 )
+
+[node name="Crate9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1036.47, 279.25 )
+
+[node name="Crate10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1205.14, 402.609 )
+
+[node name="Crate11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1157.31, 281.767 )
+
+[node name="GrabPoint" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1487.64, 155.544 )
+
+[node name="GrabPoint2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1984.53, 155.544 )
+
+[node name="Crate7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 991.154, 153.373 )
+
+[node name="Crate3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 918.146, 276.732 )
+
+[node name="Crate4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2463.91, 395.056 )
+
+[node name="Crate6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2295.24, 395.056 )
+
+[node name="Crate5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2494.12, 269.18 )
+
+[node name="PatrollingBoundry2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 848.819, -891.959 )
+
+[node name="PatrollingBoundry" parent="." instance=ExtResource( 9 )]
+editor/display_folded = false
+position = Vector2( 282.525, -886.865 )
+
+[node name="PatrollingEnemy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 601.18, -910.642 )
+
+[node name="Detonator" parent="." instance=ExtResource( 11 )]
+position = Vector2( 801.534, -1805.82 )
+
+[node name="ExitPoint" parent="." instance=ExtResource( 12 )]

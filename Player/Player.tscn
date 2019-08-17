@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ChainArm/Chain.tscn" type="PackedScene" id=2]
@@ -44,7 +44,10 @@ animations = [ {
 radius = 25.5164
 height = 46.5398
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 25.3456, 10 )
+
+[sub_resource type="Animation" id=3]
 resource_name = "Damage"
 length = 1.9
 tracks/0/type = "value"
@@ -60,7 +63,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.219608, 0.219608, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Damage_corrupt"
 length = 5.0
 tracks/0/type = "value"
@@ -88,7 +91,7 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "Die"
 length = 2.6
 tracks/0/type = "value"
@@ -128,7 +131,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 0.219608, 0.219608, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.882353 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -182,7 +185,8 @@ loops = 6
 scale = Vector2( 0.5, 0.5 )
 z_index = 10
 frames = SubResource( 1 )
-animation = "Jump"
+animation = "Idle"
+frame = 2
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -193,6 +197,8 @@ shape = SubResource( 2 )
 ]]
 offset = Vector2( 0, -170 )
 current = true
+limit_left = 20
+limit_right = 2650
 smoothing_enabled = true
 smoothing_speed = 10.0
 drag_margin_left = 0.05
@@ -201,13 +207,17 @@ drag_margin_right = 0.05
 drag_margin_bottom = 0.0
 script = ExtResource( 21 )
 
-[node name="FloorRay" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 0, 50.91 )
-collision_mask = 2
+[node name="FloorBox" type="Area2D" parent="."]
+position = Vector2( 0.03, 42.02 )
+collision_mask = 3
+
+[node name="Area2D" type="CollisionShape2D" parent="FloorBox"]
+shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 5 )
-anims/Damage_corrupt = SubResource( 6 )
-anims/Die = SubResource( 7 )
-anims/default = SubResource( 8 )
+anims/Damage = SubResource( 3 )
+anims/Damage_corrupt = SubResource( 4 )
+anims/Die = SubResource( 5 )
+anims/default = SubResource( 6 )
+[connection signal="body_entered" from="FloorBox" to="." method="_on_FloorBox_body_entered"]
+[connection signal="body_exited" from="FloorBox" to="." method="_on_FloorBox_body_exited"]

@@ -4,7 +4,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-[node name="PatrollingBoundry" type="Area2D"]
+[node name="PatrollingBoundry" type="Area2D" groups=[
+"Patrol_A",
+]]
 editor/display_folded = true
 position = Vector2( 886.427, 557.393 )
 collision_layer = 1024
