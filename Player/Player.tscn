@@ -1,54 +1,54 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/ChainArm/Chain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/player-jump/player-jump.png" type="Texture" id=3]
-[ext_resource path="res://Assets/player-idle/player-idle.png" type="Texture" id=4]
-[ext_resource path="res://Assets/player-idle/player-idle-1.png" type="Texture" id=5]
-[ext_resource path="res://Assets/player-idle/player-idle-2.png" type="Texture" id=6]
-[ext_resource path="res://Assets/player-idle/player-idle-3.png" type="Texture" id=7]
-[ext_resource path="res://Assets/player-idle/player-idle-4.png" type="Texture" id=8]
-[ext_resource path="res://Assets/player-walk/player-walk-3.png" type="Texture" id=9]
-[ext_resource path="res://Assets/player-walk/player-walk-4.png" type="Texture" id=10]
-[ext_resource path="res://Assets/player-walk/player-walk-5.png" type="Texture" id=11]
-[ext_resource path="res://Assets/player-walk/player-walk-6.png" type="Texture" id=12]
-[ext_resource path="res://Assets/player-walk/player-walk-7.png" type="Texture" id=13]
-[ext_resource path="res://Assets/player-walk/player-walk-8.png" type="Texture" id=14]
-[ext_resource path="res://Assets/player-walk/player-walk-9.png" type="Texture" id=15]
-[ext_resource path="res://Assets/player-walk/player-walk-10.png" type="Texture" id=16]
-[ext_resource path="res://Assets/player-walk/player-walk-11.png" type="Texture" id=17]
-[ext_resource path="res://Assets/player-walk/player-walk.png" type="Texture" id=18]
-[ext_resource path="res://Assets/player-walk/player-walk-1.png" type="Texture" id=19]
-[ext_resource path="res://Assets/player-walk/player-walk-2.png" type="Texture" id=20]
-[ext_resource path="res://Assets/background-elements/background.png" type="Texture" id=21]
-[ext_resource path="res://Player/Camera2D.gd" type="Script" id=22]
+[ext_resource path="res://Assets/player-walk/player-walk-3.png" type="Texture" id=3]
+[ext_resource path="res://Assets/player-walk/player-walk-4.png" type="Texture" id=4]
+[ext_resource path="res://Assets/player-walk/player-walk-5.png" type="Texture" id=5]
+[ext_resource path="res://Assets/player-walk/player-walk-6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/player-walk/player-walk-7.png" type="Texture" id=7]
+[ext_resource path="res://Assets/player-walk/player-walk-8.png" type="Texture" id=8]
+[ext_resource path="res://Assets/player-walk/player-walk-9.png" type="Texture" id=9]
+[ext_resource path="res://Assets/player-walk/player-walk-10.png" type="Texture" id=10]
+[ext_resource path="res://Assets/player-walk/player-walk-11.png" type="Texture" id=11]
+[ext_resource path="res://Assets/player-walk/player-walk.png" type="Texture" id=12]
+[ext_resource path="res://Assets/player-walk/player-walk-1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/player-walk/player-walk-2.png" type="Texture" id=14]
+[ext_resource path="res://Assets/player-idle/player-idle.png" type="Texture" id=15]
+[ext_resource path="res://Assets/player-idle/player-idle-1.png" type="Texture" id=16]
+[ext_resource path="res://Assets/player-idle/player-idle-2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/player-idle/player-idle-3.png" type="Texture" id=18]
+[ext_resource path="res://Assets/player-idle/player-idle-4.png" type="Texture" id=19]
+[ext_resource path="res://Assets/player-jump/player-jump.png" type="Texture" id=20]
+[ext_resource path="res://Player/Camera2D.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
-"name": "Jump",
-"speed": 5.0
+"name": "Walk",
+"speed": 12.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 17 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 6.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"frames": [ ExtResource( 20 ) ],
 "loop": true,
-"name": "Walk",
-"speed": 12.0
+"name": "Jump",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 25.5164
 height = 46.5398
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 25.3456, 10 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
+resource_name = "Damage"
 length = 1.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -63,7 +63,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 0.219608, 0.219608, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
+resource_name = "Damage_corrupt"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:modulate")
@@ -90,7 +91,8 @@ tracks/1/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
+resource_name = "Die"
 length = 2.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -129,7 +131,8 @@ tracks/2/keys = {
 "values": [ Color( 1, 0.219608, 0.219608, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 0.882353 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -183,50 +186,38 @@ scale = Vector2( 0.5, 0.5 )
 z_index = 10
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 4
+frame = 2
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2( 0, -170 )
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.8, 0.8 )
-motion_mirroring = Vector2( 1350, 1350 )
-
-[node name="background" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2( 1.5, 1.5 )
-texture = ExtResource( 21 )
-centered = false
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[
 "Main_Camera",
 ]]
 offset = Vector2( 0, -170 )
 current = true
-limit_left = -500
-limit_right = 3500
+limit_left = 20
+limit_right = 3550
 smoothing_enabled = true
 smoothing_speed = 10.0
 drag_margin_left = 0.05
 drag_margin_top = 0.05
 drag_margin_right = 0.05
 drag_margin_bottom = 0.0
-script = ExtResource( 22 )
+script = ExtResource( 21 )
 
 [node name="FloorBox" type="Area2D" parent="."]
 position = Vector2( 0.03, 42.02 )
 collision_mask = 3
 
 [node name="Area2D" type="CollisionShape2D" parent="FloorBox"]
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 4 )
-anims/Damage_corrupt = SubResource( 5 )
-anims/Die = SubResource( 6 )
-anims/default = SubResource( 7 )
+anims/Damage = SubResource( 3 )
+anims/Damage_corrupt = SubResource( 4 )
+anims/Die = SubResource( 5 )
+anims/default = SubResource( 6 )
 [connection signal="body_entered" from="FloorBox" to="." method="_on_FloorBox_body_entered"]
 [connection signal="body_exited" from="FloorBox" to="." method="_on_FloorBox_body_exited"]

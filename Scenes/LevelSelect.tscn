@@ -52,6 +52,7 @@ margin_bottom = 229.574
 texture_normal = ExtResource( 5 )
 
 [node name="Tower4" type="TextureButton" parent="CenterContainer/TextureRect"]
+visible = false
 margin_left = 250.787
 margin_top = 25.439
 margin_right = 330.787

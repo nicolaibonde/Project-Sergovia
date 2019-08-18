@@ -28,6 +28,8 @@ func detonate():
 	elif level == 3:
 		Globals.Tower4Completed = true
 	
+	$Sprite.texture = load("res://Assets/tiles/boom_on.png")
+	
 	emit_signal("shake",10,30,75)
 	AudioManager.playSample("res://SoundEffects/Explosion1.wav",-10)
 	var exit = get_tree().get_nodes_in_group("ExitPoint")[0]
